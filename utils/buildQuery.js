@@ -2,7 +2,9 @@
 'use strict';
 
 // eslint-disable-next-line max-lines-per-function
-const buildQuery = (owner, name, pr) => `
+const buildQuery = (repo, pr) => {
+	const [owner, name] = repo.split('/');
+	return `
       {
         repository(owner: "${owner}", name: "${name}") {
           branchProtectionRules(first: 10) {
@@ -60,5 +62,6 @@ const buildQuery = (owner, name, pr) => `
         }
       }
     `;
+};
 
 module.exports = buildQuery;

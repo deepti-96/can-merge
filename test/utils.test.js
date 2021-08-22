@@ -4,7 +4,7 @@ const test = require('tape');
 
 const evaluatePullRequest = require('../utils/evaluatePullRequest');
 
-const { mockResponses } = require('./mocks');
+const mockResponses = require('./mocks.json');
 
 test('evaluatePullRequest', (t) => {
 	t.plan(mockResponses.length);

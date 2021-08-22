@@ -2,11 +2,8 @@
 
 const { graphql } = require('@octokit/graphql');
 
-const buildQuery = require('./buildQuery');
-
-const runQuery = async (repo, pr, token) => {
-	const [owner, name] = repo.split('/');
-	const response = await graphql(buildQuery(owner, name, pr), {
+const runQuery = async (query, token) => {
+	const response = await graphql(query, {
 		headers: {
 			authorization: `token ${token}`,
 		},

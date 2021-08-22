@@ -8,6 +8,7 @@ require('dotenv').config();
 const getRepo = require('../utils/getRepo');
 const getSHA = require('../utils/getSHA');
 
+const buildQuery = require('../utils/buildQuery');
 const runQuery = require('../utils/runQuery');
 const evaluatePullRequest = require('../utils/evaluatePullRequest');
 
@@ -43,7 +44,7 @@ const evaluatePullRequest = require('../utils/evaluatePullRequest');
 
 		const token = process.env.GITHUB_TOKEN || args.token;
 
-		const response = await runQuery(args.repo, args.pr, token);
+		const response = await runQuery(buildQuery(args.repo, args.pr), token);
 
 		if (process.env.NODE_ENV === 'DEBUG') {
 			console.log(JSON.stringify(response, null, 2));
